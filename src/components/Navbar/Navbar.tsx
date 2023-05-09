@@ -1,7 +1,7 @@
 import { Flex, Spacer } from "@chakra-ui/react";
 import React from "react";
 import Searchbar from "./Searchbar";
-import LeftButtons from "./leftButtons";
+import LeftButtons from "./LeftButtons";
 import RightButtons from "./RightButtons";
 
 type NavbarProps = {};

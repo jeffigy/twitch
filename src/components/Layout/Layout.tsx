@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import Chatbar from "components/Chatbar/Chatbar";
-import Navbar from "components/Navbar.tsx/Navbar";
+import Navbar from "components/Navbar/Navbar";
 import Sidebar from "components/Sidebar/Sidebar";
 import React from "react";
 
