@@ -11,6 +11,7 @@ const Chatbar: React.FC<ChatbarProps> = () => {
       pos={"absolute"}
       right={0}
       mt={"50px"}
+      display={"none"}
     >
       Chatbar
     </Flex>

@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Navbar />
       <Sidebar />
       <main>
-        <Flex bg={"gray"} mx={" 50px"}>
+        <Flex bg={"gray"} ml={{ base: "50px", lg: "240px" }}>
           {children}
         </Flex>
       </main>
