@@ -1,11 +1,22 @@
 import { Flex, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
-import React from "react";
-import { Heart } from "react-feather";
-import { ArrowLeft } from "react-feather";
+import React, { useState } from "react";
+import { Heart, ArrowLeft, ArrowRight } from "react-feather";
 import Channels from "./Channels";
+
 type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [sidebarWidth, setSidebarWidth] = useState("50px");
+
+  const handleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+    setSidebarWidth(isCollapsed ? "50px" : "240px");
+  };
+
+  const buttonIcon = isCollapsed ? <ArrowLeft /> : <ArrowRight />;
+  const textHide = isCollapsed ? "block" : "none";
+
   const channels = [
     {
       name: "YapzOrdota",
@@ -28,41 +39,55 @@ const Sidebar: React.FC<SidebarProps> = () => {
       viewers: "21.6K",
     },
   ];
+
   return (
     <Flex
       bg={useColorModeValue("#efeff1", "#1f1f23")}
       pos={"absolute"}
       h={"calc(100vh - 50px)"}
       mt={"50px"}
-      w={{ base: "50px", xl: "240px" }}
+      w={{ base: "50px", xl: sidebarWidth }}
       flexDirection={"column"}
       alignItems={"center"}
     >
       {/* Header */}
       <Flex
         w={"full"}
-        p={"5px 10px"}
-        justifyContent={"space-between"}
+        p={{ base: "none", xl: isCollapsed ? "5px 10px" : "0px" }}
+        justifyContent={isCollapsed ? "space-between" : "center"}
         alignItems={"center"}
       >
         <Text
-          display={{ base: "none", xl: "block" }}
+          display={{ base: "none", xl: textHide }}
           fontWeight={"bold"}
           fontSize={"13px"}
           textTransform={"uppercase"}
         >
           recommended channels
         </Text>
-
-        <ArrowLeft />
+        {/* collapse button */}
+        <IconButton
+          //display property is set to none for mobile devices and default behavior for desktop devices
+          display={{ base: "none", xl: "flex" }}
+          icon={buttonIcon}
+          aria-label={"collapse"}
+          bg={"transparent"}
+          onClick={handleCollapse}
+        />
       </Flex>
 
       {channels.map((channel, index) => {
-        return <Channels key={`channel-${index}`} {...channel} />;
+        return (
+          <Channels
+            key={`channel-${index}`}
+            isCollapsed={isCollapsed}
+            {...channel}
+          />
+        );
       })}
       <Flex w={"full"} p={"5px 10px"}>
         <Text
-          display={{ base: "none", xl: "block" }}
+          display={{ base: "none", xl: textHide }}
           fontSize={"12px"}
           color={"brand.PrimaryColor"}
         >
@@ -72,4 +97,5 @@ const Sidebar: React.FC<SidebarProps> = () => {
     </Flex>
   );
 };
+
 export default Sidebar;

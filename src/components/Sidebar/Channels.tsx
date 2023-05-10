@@ -1,14 +1,21 @@
 import { Flex, Avatar, Stack, Spacer, HStack, Text } from "@chakra-ui/react";
 import { Target } from "react-feather";
-import React from "react";
+import React, { useState } from "react";
 
 type ChannelsProps = {
   name: string;
   game: string;
   viewers: string;
+  isCollapsed: boolean;
 };
 
-const Channels: React.FC<ChannelsProps> = ({ name, game, viewers }) => {
+const Channels: React.FC<ChannelsProps> = ({
+  name,
+  game,
+  viewers,
+  isCollapsed,
+}) => {
+  const textHide = isCollapsed ? "block" : "none";
   return (
     <Flex
       p={"5px 10px"}
@@ -18,7 +25,7 @@ const Channels: React.FC<ChannelsProps> = ({ name, game, viewers }) => {
     >
       <Avatar boxSize={"30px"} />
 
-      <Stack display={{ base: "none", xl: "block" }} spacing={0} ml={"10px"}>
+      <Stack display={{ base: "none", xl: textHide }} spacing={0} ml={"10px"}>
         <Text fontSize={"14px"} fontWeight={"bold"}>
           {name}
         </Text>
@@ -26,8 +33,14 @@ const Channels: React.FC<ChannelsProps> = ({ name, game, viewers }) => {
           {game}
         </Text>
       </Stack>
-      <Spacer display={{ base: "none", xl: "block" }} />
-      <HStack display={{ base: "none", xl: "contents" }} spacing={1}>
+      <Spacer display={{ base: "none", xl: textHide }} />
+      <HStack
+        display={{
+          base: "none",
+          xl: isCollapsed === true ? "contents" : "none",
+        }}
+        spacing={1}
+      >
         <Target color="red" size={"8px"} />
         <Text fontSize={"13px"}>{viewers}</Text>
       </HStack>
