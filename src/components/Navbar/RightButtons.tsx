@@ -1,4 +1,4 @@
-import { SearchIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
 import {
   Avatar,
   Button,
@@ -8,6 +8,9 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -16,9 +19,17 @@ import {
   PopoverHeader,
   PopoverTrigger,
   useBreakpointValue,
+  useColorMode,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Search, Inbox, Slack, MessageSquare, Layers } from "react-feather";
+import {
+  Search,
+  Inbox,
+  Slack,
+  MessageSquare,
+  Layers,
+  Menu,
+} from "react-feather";
 type RightButtonsProps = {};
 
 const RightButtons: React.FC<RightButtonsProps> = () => {
@@ -45,8 +56,12 @@ const RightButtons: React.FC<RightButtonsProps> = () => {
     { icon: MessageSquare, label: "message" },
     { icon: Layers, label: "layers" },
   ];
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <HStack spacing={"5px"}>
+      <Button onClick={toggleColorMode}>
+        Toggle {colorMode === "light" ? "Dark" : "Light"}
+      </Button>
       <Popover
         isOpen={isPopoverOpen}
         onOpen={() => setIsPopoverOpen(true)}
@@ -104,7 +119,7 @@ const RightButtons: React.FC<RightButtonsProps> = () => {
         {" "}
         Get Bits
       </Button>
-      <Avatar ml={"10px"} size={"sm"} bg={"brand.PrimaryColor"} />
+      <Avatar ml={"10px"} size={"sm"} bg={"brand.SecondaryColor"} />
     </HStack>
   );
 };

@@ -1,4 +1,4 @@
-import { Flex, IconButton, Text } from "@chakra-ui/react";
+import { Flex, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import { Heart } from "react-feather";
 import { ArrowLeft } from "react-feather";
@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   ];
   return (
     <Flex
-      border={"1px solid black"}
+      bg={useColorModeValue("#efeff1", "#1f1f23")}
       pos={"absolute"}
       h={"calc(100vh - 50px)"}
       mt={"50px"}
@@ -45,24 +45,27 @@ const Sidebar: React.FC<SidebarProps> = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <Text fontWeight={"bold"} fontSize={"13px"} textTransform={"uppercase"}>
+        <Text
+          display={{ base: "none", xl: "block" }}
+          fontWeight={"bold"}
+          fontSize={"13px"}
+          textTransform={"uppercase"}
+        >
           recommended channels
         </Text>
 
         <ArrowLeft />
       </Flex>
-      <IconButton
-        display={{ base: "flex", xl: "none" }}
-        bg={"transparent"}
-        boxSize={"30px"}
-        icon={<Heart />}
-        aria-label={""}
-      />
+
       {channels.map((channel, index) => {
         return <Channels key={`channel-${index}`} {...channel} />;
       })}
       <Flex w={"full"} p={"5px 10px"}>
-        <Text fontSize={"12px"} color={"brand.PrimaryColor"}>
+        <Text
+          display={{ base: "none", xl: "block" }}
+          fontSize={"12px"}
+          color={"brand.PrimaryColor"}
+        >
           Show More
         </Text>
       </Flex>

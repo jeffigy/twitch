@@ -18,7 +18,7 @@ const Channels: React.FC<ChannelsProps> = ({ name, game, viewers }) => {
     >
       <Avatar boxSize={"30px"} />
 
-      <Stack spacing={0} ml={"15px"}>
+      <Stack display={{ base: "none", xl: "block" }} spacing={0} ml={"10px"}>
         <Text fontSize={"14px"} fontWeight={"bold"}>
           {name}
         </Text>
@@ -26,8 +26,8 @@ const Channels: React.FC<ChannelsProps> = ({ name, game, viewers }) => {
           {game}
         </Text>
       </Stack>
-      <Spacer />
-      <HStack spacing={1}>
+      <Spacer display={{ base: "none", xl: "block" }} />
+      <HStack display={{ base: "none", xl: "contents" }} spacing={1}>
         <Target color="red" size={"8px"} />
         <Text fontSize={"13px"}>{viewers}</Text>
       </HStack>

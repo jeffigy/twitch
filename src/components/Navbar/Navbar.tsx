@@ -1,5 +1,11 @@
-import { Flex, Image, Spacer } from "@chakra-ui/react";
-import React from "react";
+import {
+  Flex,
+  Image,
+  Spacer,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 import Searchbar from "./Searchbar";
 import LeftButtons from "./LeftButtons";
 import RightButtons from "./RightButtons";
@@ -7,8 +13,10 @@ import twitch from "@assets/twitch-logo.png";
 type NavbarProps = {};
 
 const Navbar: React.FC<NavbarProps> = () => {
+  const [mode, setmode] = useState(useColorMode);
   return (
     <Flex
+      bg={useColorModeValue("white", "#18181b")}
       position={"sticky"}
       h={"50px"}
       justifyContent={"space-between"}
