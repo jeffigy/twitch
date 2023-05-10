@@ -1,6 +1,7 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Avatar,
+  Button,
   HStack,
   Icon,
   IconButton,
@@ -45,7 +46,7 @@ const RightButtons: React.FC<RightButtonsProps> = () => {
     { icon: Layers, label: "layers" },
   ];
   return (
-    <HStack spacing={"10px"}>
+    <HStack spacing={"5px"}>
       <Popover
         isOpen={isPopoverOpen}
         onOpen={() => setIsPopoverOpen(true)}
@@ -56,7 +57,7 @@ const RightButtons: React.FC<RightButtonsProps> = () => {
             key={0}
             display={{ base: "flex", md: "none" }}
             bg={"transparent"}
-            icon={<Icon as={buttons[0].icon} boxSize={5} />}
+            icon={<Icon as={buttons[0].icon} boxSize={4} />}
             aria-label={buttons[0].label}
           />
         </PopoverTrigger>
@@ -76,17 +77,34 @@ const RightButtons: React.FC<RightButtonsProps> = () => {
           </PopoverBody>
         </PopoverContent>
       </Popover>
-      {buttons.slice(1, 3).map((button, index) => {
+      {buttons.slice(1, 4).map((button, index) => {
         return (
           <IconButton
             key={index}
             bg={"transparent"}
-            icon={<Icon as={button.icon} boxSize={5} />}
+            icon={<Icon as={button.icon} boxSize={4} />}
             aria-label={button.label}
           />
         );
       })}
-      <Avatar size={"sm"} bg={"brand.PrimaryColor"} />
+      <IconButton
+        key={4}
+        display={{ base: "flex", xl: "none" }}
+        bg={"transparent"}
+        icon={<Icon as={buttons[4].icon} boxSize={4} />}
+        aria-label={buttons[4].label}
+      />
+
+      <Button
+        size={"sm"}
+        fontSize={"13px"}
+        display={{ base: "none", xl: "flex" }}
+        leftIcon={<Icon as={buttons[4].icon} boxSize={4} />}
+      >
+        {" "}
+        Get Bits
+      </Button>
+      <Avatar ml={"10px"} size={"sm"} bg={"brand.PrimaryColor"} />
     </HStack>
   );
 };
