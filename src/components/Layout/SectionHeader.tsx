@@ -11,7 +11,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   normalText,
 }) => {
   return (
-    <Flex direction={"row"} mt={"40px"}>
+    <Flex direction={"row"} mt={"40px"} mb={"20px"}>
       <Text
         fontSize={"18px "}
         fontWeight={"bold"}
