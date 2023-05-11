@@ -30,7 +30,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         handleCollapse={handleCollapse}
       />
       <main>
-        <Flex bg={"gray"} ml={{ base: "50px", xl: mainMarginLeft }}>
+        <Flex ml={{ base: "50px", xl: mainMarginLeft }} p={" 24px 38px"}>
           {children}
         </Flex>
       </main>

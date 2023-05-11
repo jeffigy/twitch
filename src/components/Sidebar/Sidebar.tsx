@@ -42,8 +42,10 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <Flex
+      position={"sticky"}
+      zIndex={"1"}
       bg={useColorModeValue("#efeff1", "#1f1f23")}
-      pos={"absolute"}
+      pos={"fixed"}
       h={"calc(100vh - 50px)"}
       mt={"50px"}
       w={{ base: "50px", xl: sidebarWidth }}

@@ -16,6 +16,8 @@ const Navbar: React.FC<NavbarProps> = () => {
   const [mode, setmode] = useState(useColorMode);
   return (
     <Flex
+      zIndex={"1"}
+      top={0}
       bg={useColorModeValue("white", "#18181b")}
       position={"sticky"}
       h={"50px"}
