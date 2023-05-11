@@ -3,19 +3,19 @@ import React, { useState } from "react";
 import { Heart, ArrowLeft, ArrowRight } from "react-feather";
 import Channels from "./Channels";
 
-type SidebarProps = {};
+type SidebarProps = {
+  isCollapsed: boolean;
+  sidebarWidth: string;
+  handleCollapse: () => void;
+};
 
-const Sidebar: React.FC<SidebarProps> = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [sidebarWidth, setSidebarWidth] = useState("50px");
-
-  const handleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-    setSidebarWidth(isCollapsed ? "50px" : "240px");
-  };
-
-  const buttonIcon = isCollapsed ? <ArrowLeft /> : <ArrowRight />;
-  const textHide = isCollapsed ? "block" : "none";
+const Sidebar: React.FC<SidebarProps> = ({
+  isCollapsed,
+  sidebarWidth,
+  handleCollapse,
+}) => {
+  const buttonIcon = isCollapsed ? <ArrowRight /> : <ArrowLeft />;
+  const textHide = isCollapsed ? "none" : "block";
 
   const channels = [
     {
@@ -53,8 +53,8 @@ const Sidebar: React.FC<SidebarProps> = () => {
       {/* Header */}
       <Flex
         w={"full"}
-        p={{ base: "none", xl: isCollapsed ? "5px 10px" : "0px" }}
-        justifyContent={isCollapsed ? "space-between" : "center"}
+        p={{ base: "none", xl: isCollapsed ? "0px" : "5px 10px" }}
+        justifyContent={isCollapsed ? "center" : "space-between"}
         alignItems={"center"}
       >
         <Text
@@ -65,9 +65,9 @@ const Sidebar: React.FC<SidebarProps> = () => {
         >
           recommended channels
         </Text>
+
         {/* collapse button */}
         <IconButton
-          //display property is set to none for mobile devices and default behavior for desktop devices
           display={{ base: "none", xl: "flex" }}
           icon={buttonIcon}
           aria-label={"collapse"}

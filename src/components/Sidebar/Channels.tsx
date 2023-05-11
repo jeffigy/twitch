@@ -15,7 +15,7 @@ const Channels: React.FC<ChannelsProps> = ({
   viewers,
   isCollapsed,
 }) => {
-  const textHide = isCollapsed ? "block" : "none";
+  const textHide = isCollapsed ? "none" : "block";
   return (
     <Flex
       p={"5px 10px"}
@@ -37,7 +37,7 @@ const Channels: React.FC<ChannelsProps> = ({
       <HStack
         display={{
           base: "none",
-          xl: isCollapsed === true ? "contents" : "none",
+          xl: isCollapsed === true ? "none" : "contents",
         }}
         spacing={1}
       >
